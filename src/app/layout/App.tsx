@@ -3,11 +3,14 @@ import {
   createTheme,
   CssBaseline,
   ThemeProvider,
-  Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Route } from "react-router-dom";
+import AboutPage from "../../features/about/AboutPage";
 import Catalog from "../../features/catalog/Catalog";
-import { Product } from "../models/product";
+import ProductDetails from "../../features/catalog/ProductDetails";
+import ContactPage from "../../features/contact/ContactPage";
+import HomePage from "../../features/home/HomePage";
 import Header from "./Header";
 
 function App() {
@@ -29,7 +32,11 @@ function App() {
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
       <Container>
-        <Catalog />
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/catalog" component={Catalog} />
+        <Route exact path="/catalog/:id" component={ProductDetails} />
+        <Route exact path="/about" component={AboutPage} />
+        <Route exact path="/contact" component={ContactPage} />
       </Container>
     </ThemeProvider>
   );
