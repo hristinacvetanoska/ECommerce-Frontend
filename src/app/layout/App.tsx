@@ -16,6 +16,7 @@ import Header from "./Header";
 import "react-toastify/dist/ReactToastify.css";
 import ServerError from "../errors/ServerError";
 import NotFound from "../errors/NotFound";
+import BasketPage from "../../features/basket/BasketPage";
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const paletteType = darkMode ? "dark" : "light";
@@ -43,6 +44,7 @@ function App() {
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/contact" component={ContactPage} />
           <Route exact path="/server-error" component={ServerError} />
+          <Route exact path="/basket" component={BasketPage} />
           <Route exact component={NotFound} />
         </Switch>
       </Container>
