@@ -131,8 +131,8 @@ export default function BasketPage() {
         </Table>
       </TableContainer>
       <Grid container>
-        <Grid xs={6} />
-        <Grid xs={6}>
+        <Grid item xs={6} />
+        <Grid item xs={6}>
           <BasketSummary />
         </Grid>
       </Grid>
