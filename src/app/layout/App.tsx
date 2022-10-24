@@ -22,6 +22,7 @@ import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 import { getCookie } from "../util/util";
 import agent from "../api/agent";
 import LoadingComponent from "./LoadingComponent";
+import CheckoutPage from "../../features/checkout/CheckoutPage";
 function App() {
   const { setBasket } = useStoreContext();
   const [loading, setLoading] = useState(true);
@@ -66,6 +67,7 @@ function App() {
           <Route exact path="/contact" component={ContactPage} />
           <Route exact path="/server-error" component={ServerError} />
           <Route exact path="/basket" component={BasketPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
           <Route exact component={NotFound} />
         </Switch>
       </Container>
