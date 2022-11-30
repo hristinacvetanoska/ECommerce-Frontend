@@ -18,6 +18,14 @@ export default function Review() {
           <BasketSummary />
         </Grid>
       </Grid>
+      <Typography variant="h6" gutterBottom>
+        Payment method
+      </Typography>{" "}
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={6}>
+          Cash
+        </Grid>
+      </Grid>
     </>
   );
 }

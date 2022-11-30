@@ -15,6 +15,10 @@ export default function PaymentForm() {
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
+          Cash
+        </Grid>
+
+        {/*  <Grid item xs={12} md={6}>
           <AppTextInput
             name="nameOnCard"
             label="Name on card"
@@ -57,7 +61,7 @@ export default function PaymentForm() {
             control={<Checkbox color="secondary" name="saveCard" value="yes" />}
             label="Remember credit card details for next time"
           />
-        </Grid>
+        </Grid>*/}
       </Grid>
     </>
   );

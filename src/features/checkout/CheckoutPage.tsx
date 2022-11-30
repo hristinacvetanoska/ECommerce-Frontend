@@ -19,7 +19,10 @@ import { useAppDispatch } from "../../app/store/configureStore";
 import { clearBasket } from "../basket/basketSlice";
 import { LoadingButton } from "@mui/lab";
 
-const steps = ["Shipping address", "Review your order", "Payment details"];
+const steps = [
+  "Shipping address",
+  "Review your order" /* , "Payment details" */,
+];
 
 function getStepContent(step: number) {
   switch (step) {
@@ -27,8 +30,8 @@ function getStepContent(step: number) {
       return <AddressForm />;
     case 1:
       return <Review />;
-    case 2:
-      return <PaymentForm />;
+    // case 2:
+    //   return <PaymentForm />;
     default:
       throw new Error("Unknown step");
   }
