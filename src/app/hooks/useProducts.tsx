@@ -13,6 +13,7 @@ export default function useProducts() {
     filtersLoaded,
     brands,
     types,
+    sellerNameList,
     productParams,
     metaData,
   } = useAppSelector((state) => state.catalog);
@@ -32,6 +33,7 @@ export default function useProducts() {
     filtersLoaded,
     brands,
     types,
+    sellerNameList,
     metaData,
   };
 }

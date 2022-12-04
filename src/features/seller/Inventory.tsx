@@ -14,7 +14,7 @@ import { Edit, Delete } from "@mui/icons-material";
 import { currencyFormat } from "../../app/util/util";
 import useProducts from "../../app/hooks/useProducts";
 import AppPagination from "../../app/components/AppPagination";
-import { useAppDispatch } from "../../app/store/configureStore";
+import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 
 import { useState } from "react";
 import ProductForm from "./ProductForm";
@@ -22,6 +22,8 @@ import { Product } from "../../app/models/product";
 import agent from "../../app/api/agent";
 import { LoadingButton } from "@mui/lab";
 import { removeProduct, setPageNumber } from "../catalog/catalogSlice";
+import NewProduct from "../newProduct/NewProduct";
+import userEvent from "@testing-library/user-event";
 
 export default function Inventory() {
   const { products, metaData } = useProducts();
@@ -70,7 +72,7 @@ export default function Inventory() {
           Create
         </Button>
       </Box>
-      <TableContainer component={Paper}>
+      {/*  <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -124,8 +126,9 @@ export default function Inventory() {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
-      {metaData && (
+      </TableContainer> */}
+      <NewProduct />
+      {/*       {metaData && (
         <Box sx={{ pt: 2 }}>
           <AppPagination
             metaData={metaData}
@@ -134,7 +137,7 @@ export default function Inventory() {
             }
           />
         </Box>
-      )}
+      )} */}
     </>
   );
 }

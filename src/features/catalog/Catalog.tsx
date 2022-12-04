@@ -15,7 +15,8 @@ const sortOptions = [
   { value: "price", label: "Price - Low to high" },
 ];
 export default function Catalog() {
-  const { products, brands, types, filtersLoaded, metaData } = useProducts();
+  const { products, brands, types, sellerNameList, filtersLoaded, metaData } =
+    useProducts();
   ///const products = useAppSelector(productSelectors.selectAll);
   const { productParams } = useAppSelector((state) => state.catalog);
   const dispatch = useAppDispatch();
@@ -51,6 +52,15 @@ export default function Catalog() {
             checked={productParams.types}
             onChange={(items: string[]) =>
               dispatch(setProductParams({ types: items }))
+            }
+          />
+        </Paper>
+        <Paper sx={{ mb: 2, p: 2 }}>
+          <CheckboxButtons
+            items={sellerNameList}
+            checked={productParams.sellerNameList}
+            onChange={(items: string[]) =>
+              dispatch(setProductParams({ sellerNameList: items }))
             }
           />
         </Paper>

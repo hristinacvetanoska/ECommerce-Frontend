@@ -28,10 +28,10 @@ export default function SignInMenu() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        {/*         <MenuItem onClick={handleClose}>Profile</MenuItem> */}
         <MenuItem component={Link} to="/orders">
           My orders
-        </MenuItem>{" "}
+        </MenuItem>
         <MenuItem
           onClick={() => {
             dispatch(signOut());

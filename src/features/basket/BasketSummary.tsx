@@ -18,10 +18,10 @@ export default function BasketSummary({ subtotal }: Props) {
   if (subtotal === undefined)
     subtotal =
       basket?.items.reduce(
-        (sum, item) => sum + (item.quantity + item.price),
+        (sum, item) => sum + item.quantity * item.price,
         0
       ) ?? 0;
-  const deliveryFee = subtotal < 1500 ? 0 : 250;
+  const deliveryFee = subtotal > 1500 ? 0 : 250;
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function BasketSummary({ subtotal }: Props) {
             <TableRow>
               <TableCell>
                 <span style={{ fontStyle: "italic" }}>
-                  *Orders over $100 qualify for free delivery
+                  *Orders over 1500 мкд qualify for free delivery
                 </span>
               </TableCell>
             </TableRow>

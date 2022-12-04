@@ -14,6 +14,7 @@ interface CatalogState {
   status: string;
   brands: string[];
   types: string[];
+  sellerNameList: string[];
   productParams: ProductParams;
   metaData: MetaData | null;
 }
@@ -22,6 +23,7 @@ const productsAdapter = createEntityAdapter<Product>();
 
 function getAxiosParams(productParams: ProductParams) {
   const params = new URLSearchParams();
+
   params.append("pageNumber", productParams.pageNumber.toString());
   params.append("pageSize", productParams.pageSize.toString());
   params.append("orderBy", productParams.orderBy);
@@ -31,6 +33,8 @@ function getAxiosParams(productParams: ProductParams) {
     params.append("brands", productParams.brands.toString());
   if (productParams.types.length > 0)
     params.append("types", productParams.types.toString());
+  if (productParams.sellerNameList.length > 0)
+    params.append("sellerNameList", productParams.sellerNameList.toString());
   return params;
 }
 
@@ -77,6 +81,7 @@ function initParams() {
     orderBy: "name",
     brands: [],
     types: [],
+    sellerNameList: [],
   };
 }
 export const catalogSlice = createSlice({
@@ -87,6 +92,7 @@ export const catalogSlice = createSlice({
     status: "idle",
     brands: [],
     types: [],
+    sellerNameList: [],
     productParams: initParams(),
     metaData: null,
   }),
@@ -131,7 +137,7 @@ export const catalogSlice = createSlice({
       state.productsLoaded = true;
     });
     builder.addCase(fetchProductsAsync.rejected, (state, action) => {
-      console.log(action);
+      console.log(action.payload);
       state.status = "idle";
     });
     builder.addCase(fetchProductAsync.pending, (state) => {
@@ -151,6 +157,7 @@ export const catalogSlice = createSlice({
     builder.addCase(fetchFilters.fulfilled, (state, action) => {
       state.brands = action.payload.brands;
       state.types = action.payload.types;
+      state.sellerNameList = action.payload.sellerNameList;
       state.filtersLoaded = true;
       state.status = "idle";
     });

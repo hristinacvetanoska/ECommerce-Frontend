@@ -19,8 +19,8 @@ interface Props {
 }
 const midLinks = [
   { title: "catalog", path: "/catalog" },
-  { title: "about", path: "/about" },
-  { title: "contact", path: "/contact" },
+  /*   { title: "about", path: "/about" }, */
+  /*   { title: "contact", path: "/contact" }, */
 ];
 const rightLinks = [
   { title: "login", path: "/login" },
@@ -72,6 +72,11 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
           {user && user.roles?.includes("Seller") && (
             <ListItem component={NavLink} to={"/inventory"} sx={navStyle}>
               INVENTORY
+            </ListItem>
+          )}
+          {user && user.roles?.includes("Admin") && (
+            <ListItem component={NavLink} to={"/approveProducts"} sx={navStyle}>
+              REVIEW
             </ListItem>
           )}
         </List>

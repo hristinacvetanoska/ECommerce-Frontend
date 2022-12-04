@@ -27,6 +27,7 @@ import { fetchCurrentUser } from "../../features/account/accountSlice";
 import PrivateRoute from "./PrivateRoute";
 import Orders from "../../features/orders/Orders";
 import Inventory from "../../features/seller/Inventory";
+import ApproveProducts from "../../features/admin/ApproveProducts";
 function App() {
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
@@ -69,7 +70,7 @@ function App() {
           <Route exact path="/catalog" component={Catalog} />
           <Route exact path="/catalog/:id" component={ProductDetails} />
           <Route exact path="/about" component={AboutPage} />
-          <Route exact path="/contact" component={ContactPage} />
+          {/* <Route exact path="/contact" component={ContactPage} /> */}
           <Route exact path="/server-error" component={ServerError} />
           <Route exact path="/basket" component={BasketPage} />
           <PrivateRoute path="/checkout" component={CheckoutPage} />
@@ -78,6 +79,11 @@ function App() {
             roles={["Seller"]}
             path="/inventory"
             component={Inventory}
+          />
+          <PrivateRoute
+            roles={["Admin"]}
+            path="/approveProducts"
+            component={ApproveProducts}
           />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />

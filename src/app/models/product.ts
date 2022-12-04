@@ -6,7 +6,9 @@ export interface Product {
   pictureUrl: string;
   type?: string;
   brand: string;
+  sellerName: string;
   quantityInStock?: number;
+  viewsCounter: number;
 }
 
 export interface ProductParams {
@@ -14,6 +16,7 @@ export interface ProductParams {
   searchTerm?: string;
   types: string[];
   brands: string[];
+  sellerNameList: string[];
   pageNumber: number;
   pageSize: number;
 }

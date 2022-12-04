@@ -10,7 +10,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import NotFound from "../../app/errors/NotFound";
 import LoadingComponent from "../../app/layout/LoadingComponent";
@@ -33,10 +33,15 @@ export default function ProductDetails() {
   const item = basket?.items.find(
     (i: { productId: number | undefined }) => i.productId === product?.id
   );
+  const dataFetchedRef = useRef(false);
+
   useEffect(() => {
     if (item) setQuantity(item.quantity);
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
     if (!product) dispatch(fetchProductAsync(parseInt(id)));
   }, [id, item, dispatch, product]);
+
   function handleInputChange(event: any) {
     if (event.target.value >= 0) {
       setQuantity(parseInt(event.target.value));
@@ -102,6 +107,10 @@ export default function ProductDetails() {
                 <TableCell>Quantity in stock</TableCell>
                 <TableCell>{product.quantityInStock}</TableCell>
               </TableRow>
+              <TableRow>
+                <TableCell>Viewers</TableCell>
+                <TableCell>{product.viewsCounter}</TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </TableContainer>
@@ -119,7 +128,9 @@ export default function ProductDetails() {
           <Grid item xs={6}>
             <LoadingButton
               disabled={
-                item?.quantity === quantity || (!item && quantity === 0)
+                item?.quantity === quantity ||
+                (!item && quantity === 0) ||
+                product.quantityInStock === 0
               }
               loading={status.includes("pending")}
               onClick={handleUpdateCart}

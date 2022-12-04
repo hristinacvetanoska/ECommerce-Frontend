@@ -90,7 +90,7 @@ function createFormData(item: any) {
 
 const Seller = {
   createProduct: (product: any) =>
-    requests.postForm("products", createFormData(product)),
+    requests.postForm("products/createProducts", createFormData(product)),
   updateProduct: (product: any) =>
     requests.putForm("products", createFormData(product)),
   deleteProduct: (id: number) => requests.delete(`products/${id}`),
@@ -101,7 +101,16 @@ const Catalog = {
   details: (id: number) => requests.get(`products/${id}`),
   fetchFilters: () => requests.get("products/filters"),
 };
-
+const NewProduct = {
+  list: (email: string) => requests.get(`products/newProducts?email=${email}`),
+};
+const Admin = {
+  approveProducts: (response: boolean, id: number) =>
+    requests.post(
+      `products/approveNewProducts?response=${response}&id=${id}`,
+      {}
+    ),
+};
 const TestErrors = {
   get400Error: () => requests.get("buggy/bad-request"),
   get401Error: () => requests.get("buggy/unauthorised"),
@@ -127,6 +136,7 @@ const Account = {
 const Orders = {
   list: () => requests.get("orders"),
   fetch: (id: number) => requests.get(`orders/${id}`),
+  productOfDay: () => requests.get("orders/bestsellerByDay"),
   create: (values: any) => requests.post("orders", values),
 };
 
@@ -137,5 +147,7 @@ const agent = {
   Account,
   Orders,
   Seller,
+  NewProduct,
+  Admin,
 };
 export default agent;

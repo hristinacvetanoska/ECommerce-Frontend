@@ -76,4 +76,13 @@ export default function AboutPage() {
       )}
     </Container>
   );
+  /*   return (
+    <>
+      {" "}
+      <h1>
+        Phoenix is an e-commerce application designed to make life easier in
+        this modern world
+      </h1>{" "}
+    </>
+  ); */
 }
