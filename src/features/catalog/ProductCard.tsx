@@ -61,12 +61,10 @@ export default function ProductCard({ product }: Props) {
           {product.brand}/{product.type}
         </Typography>
         <>
-          {productOfDay?.id === product.id ? (
+          {productOfDay && productOfDay?.id === product.id && (
             <Typography display="block" color="#F85C70">
               Product of the day
             </Typography>
-          ) : (
-            <></>
           )}
         </>
       </CardContent>

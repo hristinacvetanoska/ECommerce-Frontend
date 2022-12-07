@@ -36,14 +36,15 @@ export default function NewProducts() {
     }
   }, []);
 
-  /*   function handleDeleteProduct(id: number) {
+  function handleDeleteProduct(id: number) {
     setLoading(true);
     setTarget(id);
     agent.Seller.deleteProduct(id)
       .then(() => dispatch(removeProduct(id)))
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
-  } */
+  }
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -86,15 +87,11 @@ export default function NewProducts() {
                 {newProducts.quantityInStock}
               </TableCell>
               <TableCell align="right">
-                <Button
-                  //onClick={() => handleSelectProduct(newProducts)}
-                  startIcon={<Edit />}
-                />
                 <LoadingButton
                   loading={loading && target === newProducts.id}
                   startIcon={<Delete />}
                   color="error"
-                  //onClick={() => handleDeleteProduct(newProducts.id)}
+                  onClick={() => handleDeleteProduct(newProducts.id)}
                 />
               </TableCell>
             </TableRow>

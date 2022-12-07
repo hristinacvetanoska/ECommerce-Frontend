@@ -1,6 +1,7 @@
 import { ShoppingCart } from "@mui/icons-material";
 import {
   AppBar,
+  Avatar,
   Badge,
   Box,
   IconButton,
@@ -42,7 +43,11 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
   const { user } = useAppSelector((state) => state.account);
   const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
   return (
-    <AppBar position="static" sx={{ mb: 4 }}>
+    <AppBar
+      // style={{ background: "#F85C70", color: "#CFEED1" }}
+      position="static"
+      sx={{ mb: 4 }}
+    >
       <Toolbar
         sx={{
           display: "flex",
@@ -52,13 +57,14 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
       >
         <Box display="flex" alignItems="center">
           <Typography
+            fontStyle={"italic"}
             variant="h6"
             component={NavLink}
             to="/"
             exact
             sx={navStyle}
           >
-            ECommerce-App
+            Rose
           </Typography>
           <Switch checked={darkMode} onChange={handleThemeChange} />
         </Box>

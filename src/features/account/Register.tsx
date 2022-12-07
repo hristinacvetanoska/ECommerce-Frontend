@@ -120,7 +120,7 @@ export default function Register() {
         <TextField
           margin="normal"
           fullWidth
-          label="Role"
+          label="Role(Seller/Buyer)"
           type="userRole"
           {...register("userRole", { required: "Role is required" })}
           error={!!errors.userRole}
