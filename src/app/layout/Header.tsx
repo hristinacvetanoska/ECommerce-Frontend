@@ -18,11 +18,7 @@ interface Props {
   darkMode: boolean;
   handleThemeChange: () => void;
 }
-const midLinks = [
-  { title: "catalog", path: "/catalog" },
-  /*   { title: "about", path: "/about" }, */
-  /*   { title: "contact", path: "/contact" }, */
-];
+const midLinks = [{ title: "catalog", path: "/catalog" }];
 const rightLinks = [
   { title: "login", path: "/login" },
   { title: "register", path: "/register" },
@@ -43,11 +39,7 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
   const { user } = useAppSelector((state) => state.account);
   const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
   return (
-    <AppBar
-      // style={{ background: "#F85C70", color: "#CFEED1" }}
-      position="static"
-      sx={{ mb: 4 }}
-    >
+    <AppBar position="static" sx={{ mb: 4 }}>
       <Toolbar
         sx={{
           display: "flex",
